@@ -75,7 +75,7 @@ function loadImage(source="./images/HairyMonster.png") {
       }  
     }
 
-    currentMonster = source.slice(2,source.length - 4)
+    currentMonster = source.slice(9,source.length - 4)
 
     // Push updated pixels back to canvas
     ctx.putImageData(imageData, 0, 0);
