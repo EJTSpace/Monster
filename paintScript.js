@@ -48,7 +48,7 @@ function resizeCanvas() {
   ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
 }
 
-function loadImage(source="./HairyMonster.png") {
+function loadImage(source="./images/HairyMonster.png") {
   let image = new Image();
   image.src = source;
   image.onload = () => {
@@ -245,7 +245,7 @@ window.addEventListener("load", () => {
         dropDownContent.style.display = 'none';
         additionalContentShown = false;
         const heldMonster = currentMonster;
-        loadImage(`./${event.target.id}.png`);
+        loadImage(`./images/${event.target.id}.png`);
 
         event.target.id = heldMonster;
         event.target.innerHTML = heldMonster;
