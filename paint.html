@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="paintStyles.css">
+  <title>Monster Paint</title>
+</head>
+<body>
+  <div class="header">
+    <div class="dropdown">
+    <button class="moreMonsters">More Monsters</button>
+      <div class="dropdown-content">
+        <!-- More monsters to be populated in javaScript -->
+      </div>
+    </div>
+    <h1>Monster Paint</h1>
+  </div>
+  <div class="wrapper">
+    <div class="container">
+      <canvas class="paintCanvas" width="70%" height="100%" color-space="srgb"></canvas>
+      <div class="colourPicker">
+        <h3>Click a colour to select</h3>
+        <div class="gridWrapper">
+          <!--colour elements are added dynamically with javascript-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="paintScript.js"></script>
+</body>
+</html>
