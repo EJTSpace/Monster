@@ -32,7 +32,6 @@
   position: absolute;
   z-index: 1;
   min-width: 160px;
-  height: 2vh;
 }
 
 .dropdown-item {
@@ -107,6 +106,12 @@ h3 {
 .colourSelect {
   width: 80%;
   border: 1px solid black;
+}
+
+.activeColour {
+  width: 80%;
+  border: 3px solid black;
+  box-shadow: 0px 0px 15px #000000;
 }
 
 .colourSelect:hover {

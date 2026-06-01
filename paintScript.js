@@ -216,14 +216,22 @@ window.addEventListener("load", () => {
   //Create colour palette on the right hand side
   for (const key in coloursObjectRef) {
     if (Object.prototype.hasOwnProperty.call(coloursObjectRef, key)) { // avoid prototype keys
-      const element = document.createElement("div");
+      const element = document.createElement("button");
       element.classList.add("colourSelect",key);
       element.style.backgroundColor = coloursObjectRef[key];
       colourPickerElement.appendChild(element)
       //console.log(key, coloursObjectRef[key]);
       element.addEventListener('click', (event) => {
+
+      const currentBtnColour = document.querySelector(".activeColour") ;
+
+      if (currentBtnColour) {
+        currentBtnColour.classList.remove("activeColour")
+      }
+
       // Get the computed background color
       sessionStorage.setItem("paintUserChoice", window.getComputedStyle(event.currentTarget).backgroundColor);
+      event.currentTarget.classList.add("activeColour");
       });
 
     }
