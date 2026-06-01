@@ -20,9 +20,12 @@
 
 .moreMonsters {
   min-width: 160px;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
+  padding: 6px;
   height:100%;
   cursor: pointer;
+  background: #5077be;
+  color:white;
 }
 
 .dropdown-content {
@@ -34,9 +37,13 @@
 
 .dropdown-item {
   display: block;
+  font-size: 1.1rem;
+  padding: 6px;
   z-index: 1;
   width: 100%;
   cursor: pointer;
+  background: #5077be;
+  color:white;
 }
 
 .container {

@@ -75,7 +75,8 @@ function loadImage(source="./images/HairyMonster.png") {
       }  
     }
 
-    currentMonster = source.slice(9,source.length - 4)
+    currentMonster = source.slice(9,source.length - 4);
+    //console.log(currentMonster);
 
     // Push updated pixels back to canvas
     ctx.putImageData(imageData, 0, 0);
@@ -241,7 +242,7 @@ window.addEventListener("load", () => {
       dropDownContent.appendChild(newElement);
       newElement.addEventListener("click", (event) => {
         const dropDownContent = document.querySelector(".dropdown-content");
-        button.style.backgroundColor="ButtonFace";
+        button.style.backgroundColor="#5077be";
         dropDownContent.style.display = 'none';
         additionalContentShown = false;
         const heldMonster = currentMonster;
@@ -258,12 +259,12 @@ window.addEventListener("load", () => {
   // Add a click event listener to the moreMonesters button
   button.addEventListener("click", () => {
     if (!additionalContentShown) {
-      button.style.backgroundColor=coloursObjectRef.grey2;
+      button.style.backgroundColor="DarkSlateBlue";
       dropDownContent.style.display = 'block';
       additionalContentShown = true;
     } else if (additionalContentShown) {
       const dropDownContent = document.querySelector(".dropdown-content");
-      button.style.backgroundColor="ButtonFace";
+      button.style.backgroundColor="#5077be";
       dropDownContent.style.display = 'none';
       additionalContentShown = false;
     }
