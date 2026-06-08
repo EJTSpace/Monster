@@ -6,6 +6,10 @@ let imageData;
 let data;
 let currentMonster = "HairyMonster";
 let additionalContentShown = false;
+let helpSectionVisible = false;
+
+let helpImage = new Image();
+helpImage.src = "./images/helpsection.png";
 
 const availableMonsters = ["HairyMonster","WingedMonster","AlienWorld","AlienWorld2"]
 
@@ -222,16 +226,15 @@ window.addEventListener("load", () => {
       colourPickerElement.appendChild(element)
       //console.log(key, coloursObjectRef[key]);
       element.addEventListener('click', (event) => {
+        // Get the computed background color
+        const currentBtnColour = document.querySelector(".activeColour") ;
 
-      const currentBtnColour = document.querySelector(".activeColour") ;
+        if (currentBtnColour) {
+          currentBtnColour.classList.remove("activeColour")
+        }
 
-      if (currentBtnColour) {
-        currentBtnColour.classList.remove("activeColour")
-      }
-
-      // Get the computed background color
-      sessionStorage.setItem("paintUserChoice", window.getComputedStyle(event.currentTarget).backgroundColor);
-      event.currentTarget.classList.add("activeColour");
+        sessionStorage.setItem("paintUserChoice", window.getComputedStyle(event.currentTarget).backgroundColor);
+        event.currentTarget.classList.add("activeColour");    
       });
 
     }
@@ -266,7 +269,7 @@ window.addEventListener("load", () => {
   const button = document.querySelector(".moreMonsters");
   // Add a click event listener to the moreMonesters button
   button.addEventListener("click", () => {
-    if (!additionalContentShown) {
+    if (!additionalContentShown && !helpSectionVisible) {
       button.style.backgroundColor="DarkSlateBlue";
       dropDownContent.style.display = 'block';
       additionalContentShown = true;
@@ -280,4 +283,60 @@ window.addEventListener("load", () => {
 
   //console.log("Button text:", e.target.textContent);
 
+  const helpBtn = document.querySelector(".getHelp");
+  helpBtn.addEventListener("click", () => {
+    if (additionalContentShown) {
+      const dropDownContent = document.querySelector(".dropdown-content");
+      button.style.backgroundColor="#5077be";
+      dropDownContent.style.display = 'none';
+      additionalContentShown = false;
+    }
+
+    if (!helpSectionVisible) {
+      const containerElement = document.querySelector(".container");
+    const computedWidth = window.getComputedStyle(containerElement).width;
+    const numericWidth = parseFloat(computedWidth);
+    const computedHeight = window.getComputedStyle(containerElement).height;
+    const numericHeight = parseFloat(computedHeight);
+    const helpSectionElement = document.createElement("div");
+      helpSectionElement.classList.add("helpSection");
+    containerElement.appendChild(helpSectionElement);
+    const helpImgElement = document.createElement("img");
+      helpImgElement.src = helpImage.src;
+      //Actual image 635 wide by 420 tall
+      const minWidth = Math.min(numericWidth, 635);
+      const leftOffset = Math.floor((numericWidth-minWidth)/2);
+      helpImgElement.style.width = minWidth;
+      const helpImgHeight = minWidth*2/3;
+      helpImgElement.style.height = helpImgHeight+"px";
+      //helpImgElement.style.top = "0";
+      helpImgElement.style.marginLeft = leftOffset+"px";
+      helpImgElement.style.aspectRatio = "3/2";
+    helpSectionElement.appendChild(helpImgElement);
+    const helpSectionClose = document.createElement("button");
+      helpSectionClose.innerHTML = "Close";
+      helpSectionClose.style.position = "absolute";
+      helpSectionClose.style.width = "100%";
+      const helpSectionCloseHeight = Math.floor(Math.min((numericHeight-helpImgHeight),numericHeight*.1));
+      helpSectionClose.style.height = helpSectionCloseHeight+"px";
+      helpSectionClose.style.bottom = "0";
+      helpSectionClose.style.left = "0";
+      helpSectionClose.style.background = "blanchedalmond";
+      helpSectionClose.style.cursor = "pointer";
+      helpSectionClose.style.fontSize= "1.2rem";
+    helpSectionClose.addEventListener("click", () => {
+      const helpSectionElement = document.querySelector(".helpSection");
+      helpSectionElement.remove();
+      helpSectionVisible = false;
+    });
+    helpSectionElement.appendChild(helpSectionClose);
+    helpSectionVisible = true;
+    }
+    
+  });
 })
+
+
+
+
+

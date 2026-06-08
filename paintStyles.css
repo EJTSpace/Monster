@@ -45,6 +45,24 @@
   color:white;
 }
 
+.getHelp {
+  min-width: 160px;
+  font-size: 1.2rem;
+  padding: 6px;
+  height:100%;
+  cursor: pointer;
+  background: #5077be;
+  color:white;
+}
+
+.helpSection {
+  width:100%;
+  height:100%;
+  position: relative;
+  background: blanchedalmond;
+  z-index: 2;
+}
+
 .container {
   position: relative;
   width: 80%;
